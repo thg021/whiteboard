@@ -1,13 +1,14 @@
 import { MouseEvent } from 'react'
 import { Circle, WhiteboardContainer } from "./styles";
-import { ICirclePosition } from '../../pages/Home'
+import { ColorsCircles, ICirclePosition } from '../../pages/Home'
 
 interface IWhiteboardProps {
     onAddCircle: (event: MouseEvent<HTMLDivElement>) => void
     circles: ICirclePosition[]
+    colorCircles: ColorsCircles
 }
 
-export function Whiteboard({ onAddCircle, circles }: IWhiteboardProps) {
+export function Whiteboard({ onAddCircle, circles, colorCircles }: IWhiteboardProps) {
     return (
         <WhiteboardContainer
             onClick={onAddCircle}
@@ -15,7 +16,8 @@ export function Whiteboard({ onAddCircle, circles }: IWhiteboardProps) {
             {circles.map((circle) => (
                 <Circle
                     key={circle.id}
-                    css={{ top: circle.y, left: circle.x, '--circle-color': '#e25858' }}
+                    css={{ top: circle.y, left: circle.x }}
+                    color={colorCircles}
                 />
             ))}
         </WhiteboardContainer>

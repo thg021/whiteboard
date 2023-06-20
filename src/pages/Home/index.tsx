@@ -1,6 +1,6 @@
 import { useState, MouseEvent } from 'react'
 import { Container, ButtonGrouping } from './styles';
-import { ArrowArcLeft, ArrowArcRight, Trash } from 'phosphor-react';
+import { ArrowArcLeft, ArrowArcRight, Circle, Trash } from 'phosphor-react';
 import { Whiteboard } from '../../components/Whiteboard';
 import { Button } from '../../components/Button';
 
@@ -10,10 +10,13 @@ export interface ICirclePosition {
     y: number
 }
 
+export type ColorsCircles = 'blue' | 'purple' | 'red'
+
 export function Home() {
     const [circles, setCircles] = useState<ICirclePosition[]>([]);
     const [undo, setUndo] = useState<ICirclePosition[]>([]);
     const [redo, setRedo] = useState<ICirclePosition[]>([]);
+    const [colorCircles, setColorCircles] = useState('red' as ColorsCircles)
 
     const isDisableUndoButton = undo.length === 0 ? true : false
     const isDisableRedoButton = redo.length > 0 ? false : true
@@ -61,9 +64,13 @@ export function Home() {
 
     }
 
+    const handleChangeColorCircles = (color: ColorsCircles) => {
+        setColorCircles(color)
+    }
+
     return (
         <Container>
-            <Whiteboard circles={circles} onAddCircle={handleAddCircle} />
+            <Whiteboard circles={circles} onAddCircle={handleAddCircle} colorCircles={colorCircles} />
             <ButtonGrouping>
                 <Button onClick={handleUndo} disabled={isDisableUndoButton}>
                     <ArrowArcLeft size={20} />
@@ -73,6 +80,15 @@ export function Home() {
                 </Button>
                 <Button onClick={handleClearWhiteboard} color="red">
                     <Trash size={20} />
+                </Button>
+                <Button onClick={() => handleChangeColorCircles('red')} color="red">
+                    <Circle weight="fill" size={14} />
+                </Button>
+                <Button onClick={() => handleChangeColorCircles('blue')} color="blue">
+                    <Circle weight="fill" size={14} />
+                </Button>
+                <Button onClick={() => handleChangeColorCircles('purple')} color="purple">
+                    <Circle weight="fill" size={14} />
                 </Button>
             </ButtonGrouping>
 

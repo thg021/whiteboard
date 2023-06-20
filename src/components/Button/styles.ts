@@ -1,7 +1,6 @@
 import { styled } from "../../styles";
 
 export const ButtonContainer = styled("button", {
-    marginTop: 'auto',
     backgroundColor: '$green500',
     border: 0,
     borderRadius: 8,
@@ -32,6 +31,16 @@ export const ButtonContainer = styled("button", {
             red: {
                 svg: {
                     color: '$red500'
+                }
+            },
+            blue: {
+                svg: {
+                    color: '$blue500'
+                }
+            },
+            purple: {
+                svg: {
+                    color: '$purple500'
                 }
             }
         }

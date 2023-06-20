@@ -5,7 +5,7 @@ interface IButtonProps {
     onClick: () => void
     disabled?: boolean
     children?: ReactNode
-    color?: "red"
+    color?: "red" | "blue" | "purple"
 }
 
 export function Button({ children, ...props }: IButtonProps) {

@@ -19,14 +19,14 @@ export const Circle = styled('div', {
 
     variants: {
         color: {
-            blue: {
+            "blue": {
                 borderColor: '$blue500',
             },
-            purple: {
+            "purple": {
                 borderColor: '$purple500',
             },
-            red: {
-                borderColor: '$$red500',
+            "red": {
+                borderColor: '$red500',
             }
         }
     },
