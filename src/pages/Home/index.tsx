@@ -1,19 +1,24 @@
 import { useState, MouseEvent } from 'react'
-import { Container, Circle, Whiteboard, ButtonContainer } from './styles';
-import { ArrowArcLeft, ArrowArcRight } from 'phosphor-react';
+import { Container, ButtonContainer } from './styles';
+import { ArrowArcLeft, ArrowArcRight, Trash } from 'phosphor-react';
+import { Whiteboard } from '../../components/Whiteboard';
 
-interface ICyclePosition {
+export interface ICirclePosition {
     id: string
     x: number
     y: number
 }
 
 export function Home() {
-    const [circles, setCircles] = useState<ICyclePosition[]>([]);
-    const [undoStack, setUndoStack] = useState<ICyclePosition[]>([]);
-    const [redoStack, setRedoStack] = useState<ICyclePosition[]>([]);
+    const [circles, setCircles] = useState<ICirclePosition[]>([]);
+    const [undoStack, setUndoStack] = useState<ICirclePosition[]>([]);
+    const [redoStack, setRedoStack] = useState<ICirclePosition[]>([]);
+    console.log(undoStack)
 
-    const handleCircleClick = (event: MouseEvent<HTMLDivElement>) => {
+    const isDisableUndoButton = undoStack.length === 0 ? true : false
+    const isDisableRedoButton = redoStack.length > 0 ? false : true
+
+    const handleAddCircle = (event: MouseEvent<HTMLDivElement>) => {
         const { offsetX, offsetY } = event.nativeEvent;
 
         const newCircle = {
@@ -48,24 +53,26 @@ export function Home() {
 
         setCircles((prevCircles) => [...prevCircles, lastCircle]);
     };
+
+    const handleClearAll = () => {
+        setUndoStack([])
+        setCircles([])
+        setRedoStack([])
+
+    }
+
     return (
         <Container>
-            <Whiteboard
-                onClick={handleCircleClick}
-            >
-                {circles.map((circle) => (
-                    <Circle
-                        key={circle.id}
-                        css={{ top: circle.y, left: circle.x }}
-                    />
-                ))}
-            </Whiteboard>
+            <Whiteboard circles={circles} onAddCircle={handleAddCircle} />
             <ButtonContainer>
-                <button onClick={handleUndo}>
+                <button onClick={handleUndo} disabled={isDisableUndoButton}>
                     <ArrowArcLeft size={20} />
                 </button>
-                <button onClick={handleRedo}>
+                <button onClick={handleRedo} disabled={isDisableRedoButton}>
                     <ArrowArcRight size={20} />
+                </button>
+                <button onClick={handleClearAll}>
+                    <Trash size={20} />
                 </button>
             </ButtonContainer>
 

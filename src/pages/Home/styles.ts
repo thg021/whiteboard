@@ -8,24 +8,6 @@ export const Container = styled('div', {
     alignItems: "center",
 })
 
-export const Whiteboard = styled('div', {
-    flex: "1",
-    maxWidth: '99%',
-    height: '97vh',
-    background: '#f1f1f1',
-    border: "1px solid transparent ",
-    overflow: "hidden"
-
-})
-
-export const Circle = styled('div', {
-    position: 'absolute',
-    width: '0.5rem',
-    height: '0.5rem',
-    borderRadius: '50%',
-    background: '$circle',
-})
-
 export const ButtonContainer = styled('div', {
     position: 'fixed',
     top: 0,
