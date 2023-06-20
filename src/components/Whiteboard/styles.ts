@@ -15,18 +15,17 @@ export const Circle = styled('div', {
     width: '0.5rem',
     height: '0.5rem',
     borderRadius: '50%',
-    border: '3px solid ',
 
     variants: {
         color: {
             "blue": {
-                borderColor: '$blue500',
+                background: '$blue500',
             },
             "purple": {
-                borderColor: '$purple500',
+                background: '$purple500',
             },
             "red": {
-                borderColor: '$red500',
+                background: '$red500',
             }
         }
     },

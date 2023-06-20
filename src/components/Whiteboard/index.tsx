@@ -1,14 +1,10 @@
-import { MouseEvent } from 'react'
+import { useContext } from 'react'
 import { Circle, WhiteboardContainer } from "./styles";
-import { ColorsCircles, ICirclePosition } from '../../pages/Home'
+import { CircleContext } from '../../contexts/CirclesContext';
 
-interface IWhiteboardProps {
-    onAddCircle: (event: MouseEvent<HTMLDivElement>) => void
-    circles: ICirclePosition[]
-    colorCircles: ColorsCircles
-}
 
-export function Whiteboard({ onAddCircle, circles, colorCircles }: IWhiteboardProps) {
+export function Whiteboard() {
+    const { onAddCircle, circles } = useContext(CircleContext)
     return (
         <WhiteboardContainer
             onClick={onAddCircle}
@@ -17,7 +13,7 @@ export function Whiteboard({ onAddCircle, circles, colorCircles }: IWhiteboardPr
                 <Circle
                     key={circle.id}
                     css={{ top: circle.y, left: circle.x }}
-                    color={colorCircles}
+                    color={circle.color}
                 />
             ))}
         </WhiteboardContainer>
