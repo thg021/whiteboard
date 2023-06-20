@@ -23,7 +23,7 @@ export const {
             purple600: "#5e60ce",
             blue500: "#4ea8de",
             blue600: "#1e6f9f",
-            circle: "#e25858",
+            red500: "#e25858",
         },
     },
     utils: {

@@ -15,5 +15,22 @@ export const Circle = styled('div', {
     width: '0.5rem',
     height: '0.5rem',
     borderRadius: '50%',
-    background: '$circle',
+    border: '3px solid ',
+
+    variants: {
+        color: {
+            blue: {
+                borderColor: '$blue500',
+            },
+            purple: {
+                borderColor: '$purple500',
+            },
+            red: {
+                borderColor: '$$red500',
+            }
+        }
+    },
+    defaultVariants: {
+        color: "purple"
+    }
 })

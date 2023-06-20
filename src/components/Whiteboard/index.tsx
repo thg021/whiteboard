@@ -15,7 +15,7 @@ export function Whiteboard({ onAddCircle, circles }: IWhiteboardProps) {
             {circles.map((circle) => (
                 <Circle
                     key={circle.id}
-                    css={{ top: circle.y, left: circle.x }}
+                    css={{ top: circle.y, left: circle.x, '--circle-color': '#e25858' }}
                 />
             ))}
         </WhiteboardContainer>
