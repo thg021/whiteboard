@@ -1,9 +1,8 @@
+import { CircleContextProvider } from './contexts/CirclesContext'
+import { Home } from './pages/Home'
+import { globalStyles } from './styles/global'
 
-import { CircleContextProvider } from './contexts/CirclesContext';
-import { Home } from './pages/Home';
-import { globalStyles } from "./styles/global";
-
-globalStyles();
+globalStyles()
 export function App() {
   return (
     <CircleContextProvider>
@@ -11,4 +10,3 @@ export function App() {
     </CircleContextProvider>
   )
 }
-
